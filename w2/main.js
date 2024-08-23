@@ -1,5 +1,5 @@
-const myHeading = document.querySelector("h2");
-myHeading.textContent = cfpTotal;
+// Carbon Footprint Calculation
+// Method 1
 
 // 1. members of household
 const myHouseHold = 12;
@@ -20,5 +20,5 @@ const myTransport = 6;
 // 9. add points
 const cfpTotal = myHouseHold + myHomeSize + myFoodIntake + myWaterIntake + myPurchases + myWaste + myRecycle + myTransport;
 // 10. Write JS to update the rendered html (index.html) with total footprint
-const cfpHeading = document.querySelector('h2')
-cfpHeading.textContent = cfpTotal
+const cfpHeading = document.querySelector('h2');
+cfpHeading.textContent = cfpTotal;
