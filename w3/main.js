@@ -21,8 +21,26 @@ function determineHouseholdPts(numberInhousehold) {
 let carbonfootprintPoints = 0;
 //const numberInhousehold = 2;
 
-
 // global scope
 
 determineHouseholdPts(3)
 determineHouseholdPts(4)
+
+function determineHouseSizePts(houseSize) {
+  if (houseSize === "large") {
+    carbonFootprintPoints = carbonfootprintPoints + 10;
+  } else if (houseSize === "medium") {
+    carbonFootprintPoints = carbonfootprintPoints + 7;
+  } else if (houseSize === "small") {
+    carbonFootprintPoints = carbonfootprintPoints + 4;
+  } else if (houseSize === "apartment") {
+    carbonFootprintPoints = carbonfootprintPoints + 2;
+  }
+  console.log(
+    `based on the my house size, ${houseSize}, the new carbon FP total would be ${carbonfootprintPoints}.`
+  );
+}
+
+determineHouseSizePts("medium")
+
+// I referred to the previous example we discussed in class and after reviewing it and other examples I was able to make sure it worked. The main difference was replacing numbers of the household with the sizes of house.
