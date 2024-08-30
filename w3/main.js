@@ -1,23 +1,28 @@
-const myName = "Martin Cisneros";
-const myAge = 34.0177;
+function determineHouseholdPts(numberInhousehold) {
+    console.log("inside the function");
+    if (numberInhousehold === 1) {
+        carbonfootprintPoints = carbonfootprintPoints + 14;
+    } else if(numberInhousehold === 2) {
+        carbonfootprintPoints = carbonfootprintPoints + 12;
+    } else if(numberInhousehold === 3) {
+        carbonfootprintPoints = carbonfootprintPoints + 10;
+    } else if(numberInhousehold === 4) {
+        carbonfootprintPoints = carbonfootprintPoints + 8;
+    } else if(numberInhousehold === 5) {
+        carbonfootprintPoints = carbonfootprintPoints + 6;
+    } else if(numberInhousehold === 6) {
+        carbonfootprintPoints = carbonfootprintPoints + 4;
+    } else if(numberInhousehold > 6) {
+        carbonfootprintPoints = carbonfootprintPoints + 2;
+    }
+    console.log(`Based on the number of members of the household of ${numberInhousehold} the points would be ${carbonfootprintPoints}.`);
+}
 
-const jsIsWeird = myName + myAge;
+let carbonfootprintPoints = 0;
+//const numberInhousehold = 2;
 
-console.log(jsIsWeird);
-console.log(typeof jsIsWeird);
-console.log(typeof myAge);
 
-// what is order of presedence
-// write an example
+// global scope
 
-// const results = 
-// console.log(results)
-
-const amIhungry = true;
-console.log(typeof amIhungry);
-
-let myVar;
-console.log(typeof myVar);
-
-const myHeading = document.querySelector("h1");
-console.log(typeof myHeading);
+determineHouseholdPts(3)
+determineHouseholdPts(4)
