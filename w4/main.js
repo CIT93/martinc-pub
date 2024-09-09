@@ -42,17 +42,18 @@ function determineHouseSizePts(size) {
   }
 
   function displayOutput() {
-    for (arr of cfpData){
-      console.log(arr)
+    for (arr of cfpData) {
       const output = document.getElementById("output");
+      const newH2 = document.createElement("h2");
+      newH2.textContent = `Carbon Footprint ${arr[4]}`;
+      const newH3 = document.createElement("h3");
+      newH3.textContent = `based on number in and size of home`;
       const newP = document.createElement("p");
-      newP.textContent = `Carbon footprint total is ${arr[4]}`;
+      newP.textContent = `this number is based on the number of people in the house of ${arr[0]} (score: ${arr[3]}),`;
+      newP.textContent += ` and a ${arr[1]} size of home (score:${arr[2]}).`;
+      output.appendChild(newH2);
+      output.appendChild(newH3);
       output.appendChild(newP);
-      output.appendChild(newP1);
-      output.appendChild(newP2);
-      output.appendChild(newP3);
-      output.appendChild(newP4);
-      output.appendChild(newP5);
     }
   }
 
@@ -60,8 +61,5 @@ function determineHouseSizePts(size) {
     start(4, "large");
     start(3, "medium");
     start(2, "small");
-    start(1);
-    start(6);
-    start(7);
 
     displayOutput()
