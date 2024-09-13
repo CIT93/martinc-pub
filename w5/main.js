@@ -31,7 +31,7 @@ function determineHouseSizePts(size) {
       } else if(numberInhousehold > 6) {
         houseHoldPoints = 2;
       }
-    return houseHoldPoints
+    return houseHoldPoints;
   }
 
   function displayOutObj(obj) {
@@ -54,31 +54,31 @@ function determineHouseSizePts(size) {
     const houseHoldPoints = determineHouseholdPts(householdMembers);
     const houseSizePoints = determineHouseSizePts(houseSize);
     const total = houseHoldPoints + houseSizePoints;
+    
     cfpData.push({
         houseHM: householdMembers,
         houseS: houseSize, 
-        HouseHPts: houseHoldPoints, 
+        houseHPts: houseHoldPoints, 
         houseSPts: houseSizePoints, 
         cfpTotal: total
     });
-
-   }
+  }
 
 
   function displayOutput() {
-    for (obj of cfpData) {
-      console.log(obj)
+    for (let obj of cfpData) {
+      console.log(obj);
       const output = document.getElementById("output");
       const newH2 = document.createElement("h2");
       newH2.textContent = `Carbon Footprint ${obj.cfpTotal}`;
-  //     const newH3 = document.createElement("h3");
-  //     newH3.textContent = `based on number in and size of home`;
-  //     const newP = document.createElement("p");
-  //     newP.textContent = `this number is based on the number of people in the house of ${arr[0]} (score: ${arr[3]}),`;
-  //     newP.textContent += ` and a ${arr[1]} size of home (score:${arr[2]}).`;
+      const newH3 = document.createElement("h3");
+      newH3.textContent = `based on number in and size of home`;
+      const newP = document.createElement("p");
+      newP.textContent = `this number is based on the number of people in the house of ${obj.houseHM} (score: ${obj.houseHPts}),`;
+      newP.textContent += ` and a ${obj.houseS} size of home (score:${obj.houseSPts}).`;
       output.appendChild(newH2);
-  //     output.appendChild(newH3);
-  //     output.appendChild(newP);
+      output.appendChild(newH3);
+      output.appendChild(newP);
     }
   }
 
@@ -104,5 +104,6 @@ function determineHouseSizePts(size) {
     start(4, "large");
     start(3, "medium");
     start(2, "small");
+    start(1, "apt");
 
     displayOutput()
