@@ -7,17 +7,24 @@
     <script defer src="main.js"></script>
     <style>
         html {
-            font-size: 22px;
+            font-size: 27px;
             }
         body {
-            background-color: #333;    
+            background-color: #333;
+            color: whitesmoke
+        }
+        input:in-range {
+            background-color: springgreen;
+        }
+        input:out-of-range {
+            background-color: red;
         }
     </style>
 </head>
 <body>
     <form id="form">
         <fieldset>
-            <legend>What is your Carbon Footprint?</legend>
+            <legend>Calculating your carbon footprint points</legend>
             <div>
                 <label>First Name:</label>
                 <input type="text" name="firstname" required/>
@@ -27,12 +34,20 @@
                 <input type="text" name="lastname" required/>
             </div>
              <div>
-                <label>How many members of household:</label>
-                <input type="number" name="housem" required/>
+                <label>Count the members of your houdehold</label>
+                <input type="number" name="housem" min="1" max="6" required/>
              </div>
              <div>
-                <label>What is the size of the house:</label>
-                <input type="text" name="houses" required/>
+                <label>
+                    Consider the size of your home</label>
+                <!-- <input type="text" name="houses" required/> -->
+                <select name="houses" required>
+                    <option value="">===Please enter size of home===</option>
+                    <option value="apt">Appartment</option>
+                    <option value="large">Large</option>
+                    <option value="medium">Medium</option>
+                    <option value="small">Small</option>
+                </select>
              </div>
              <button type="submit">Submit</button>
     </fieldset>

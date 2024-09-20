@@ -36,22 +36,6 @@ function determineHouseSizePts(size) {
     return houseHoldPoints;
   }
 
-  // function displayOutObj(obj) {
-  //   console.log(obj);
-  //   const output = document.getElementById("output");
-  //   const newH2 = document.createElement("h2");
-  //   newH2.textContent = `Carbon Footprint ${obj.cfpTotal}`;
-  //   output.appendChild(newH2);
-  //   const newH3 = document.createElement("h3");
-  //   newH3.textContent = `based on number in and size of home`;
-  //   const newP = document.createElement("p");
-  //   newP.textContent = `this number is based on the number of people in the house of ${obj.houseHM} (score: ${obj.HouseHPts}),`;
-  //   newP.textContent += ` and a ${obj.houseS} size of home (score:${obj.houseSPts}).`;
-  //   output.appendChild(newH2);
-  //   output.appendChild(newH3);
-  //   output.appendChild(newP);
-  // }
-
   function start(householdMembers, houseSize) {
     const houseHoldPoints = determineHouseholdPts(householdMembers);
     const houseSizePoints = determineHouseSizePts(houseSize);
@@ -65,10 +49,8 @@ function determineHouseSizePts(size) {
     });
   }
 
-
   function displayOutput() {
     for (obj of cfpData) {
-      console.log(obj);
       const newH2 = document.createElement("h2");
       newH2.textContent = `Carbon Footprint ${obj.cfpTotal}`;
       const newH3 = document.createElement("h3");
@@ -82,37 +64,8 @@ function determineHouseSizePts(size) {
     }
   }
 
-
-  // function displayOutput() {
-  //   for (let i = 0; i < cfpData.length; i++) {
-  //     console.log(i)
-  //     const output = document.getElementById("output");
-  //     const newH2 = document.createElement("h2");
-  //     newH2.textContent = `Carbon Footprint ${cfpData[i][4]}`;
-  //     const newH3 = document.createElement("h3");
-  //     newH3.textContent = `based on number in and size of home`;
-  //     const newP = document.createElement("p");
-  //     newP.textContent = `this number is based on the number of people in the house of ${arr[0]} (score: ${arr[3]}),`;
-  //     newP.textContent += ` and a ${arr[1]} size of home (score:${arr[2]}).`;
-  //     output.appendChild(newH2);
-  //     output.appendChild(newH3);
-  //     output.appendChild(newP);
-  //   }
-  // }
-
-    // start(5, "apt");
-    // start(4, "large");
-    // start(3, "medium");
-    // start(2, "small");
-    // start(1, "apt");
-
-
-    // what does require do in the html file, input? it does simple form validation. the text box will not be allowed to submit unless required field is fulfilled
-
-    FORM.addEventListener('submit', function(e){
+  FORM.addEventListener('submit', function(e){
       e.preventDefault();
-      // console.log("I am inside the callback function");
-      // console.log(e);
       const firstName = FORM.firstname.value;
       const lastName = FORM.lastname.value;
       const householdMembers = parseInt(FORM.housem.value);
@@ -121,17 +74,12 @@ function determineHouseSizePts(size) {
       OUTPUT.innerHTML = "";
       displayOutput();
       FORM.reset();
-
     })
 
+    // is the apartment score correct? if not, why not?
+    // no it is not. Because it was not getting the cprrect reference in the index for the aprtment value "apt" in the js
 
-// callback function
+    // why are we doing all this work in the form to make sure the user gives us good data?
+    // assume the user is not giving good data. using html to save us from writing a lot of javascript because its built in . make sure we're getting good data from the user
 
-// explain what is happening in the event listener? it listens for an event or for a value in the form to be submitted before activating a function
-
-// I tried the same thing I did with the names in the form but with the household values instead
-
-// is pulling displayOutput inside the event listeners a good idea? It was a good idea for me because it fixed my code so that I could finally view the output from the form
-
-// why do you think we got duplicates? Not sure
-
+    
