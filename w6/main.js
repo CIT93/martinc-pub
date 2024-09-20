@@ -51,6 +51,8 @@ function determineHouseSizePts(size) {
 
   function displayOutput() {
     for (obj of cfpData) {
+      const newH1 = document.createElement("h1");
+      newH1.textContent = `${obj.firstname} ${obj.lastname}`;
       const newH2 = document.createElement("h2");
       newH2.textContent = `Carbon Footprint ${obj.cfpTotal}`;
       const newH3 = document.createElement("h3");
@@ -58,6 +60,7 @@ function determineHouseSizePts(size) {
       const newP = document.createElement("p");
       newP.textContent = `this number is based on the number of people in the house of ${obj.houseHM} (score: ${obj.houseHPts}),`;
       newP.textContent += ` and a ${obj.houseS} size of home (score:${obj.houseSPts}).`;
+      OUTPUT.appendChild(newH1);
       OUTPUT.appendChild(newH2);
       OUTPUT.appendChild(newH3);
       OUTPUT.appendChild(newP);
