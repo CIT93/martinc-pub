@@ -19,6 +19,15 @@ function renderTblHeading() {
     const table = renderTblHeading();
     const tbody = document.createElement("tbody");
     const tr = document.createElement("tr");
+    data.forEach(function (obj) {
+    const tdName = document.createElement("td");
+      tdName.textContent = obj.firstName;
+      const tdTotal = document.createElement("td");
+      tdTotal.textContent = obj.cfpTotal;
+      tr.appendChild(tdName);
+      tr.appendChild(tdTotal);
+      tbody.appendChild(tr);
+  })
     
     // const trTextArr = ["Martin", 2, "Medium", 19];
     // trTextArr.forEach(function(text){
@@ -34,7 +43,7 @@ function renderTblHeading() {
     // td.appendChild(btnEdit);
     // td.appendChild(btnDelete);
     // tr.appendChild(td);
-    tbody.appendChild(tr)
+    // tbody.appendChild(tr)
     table.appendChild(tbody);
     TBL.appendChild(table);
   }
