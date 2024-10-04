@@ -16,11 +16,35 @@ function renderTblHeading() {
   return table;
 }
 
-function renderTbl(data) {
-  const table = renderTblHeading();
-  const tbody = document.createElement("tbody");
+function renderTblBtn(index, data){
+    const td = document.createElement("td");
+    const btnEdit = document.createElement("button");
+    const btnDelete = document.createElement("button");
+    btnEdit.textContent = "Edit";
+    btnDelete.textContent = "Delete";
+    td.appendChild(btnEdit);
+    td.appendChild(btnDelete);
+    btnDelete.addEventListener('click', function(e){
+      console.log(e);
+      data.splice(index, 1);
+      renderTbl(data);
+    })
+    btnEdit.addEventListener('click', function(e){
+      console.log(e)
+      const rd = data[index];
+      FORM.firstName.value = data[index].firstName;
+      FORM.lastName.value = data[index].lastName;
+      FORM.houseSize.value = data[index].HouseSize;
+      FORM.householdMembers.value = data[index].householdMembers;
+      data.splice(index, 1);
+      renderTbl(data);
+    })
+    return td;
+}
 
-  data.forEach(function (obj) {
+function renderTblBody(data) {
+  const tbody = document.createElement("tbody");
+  data.forEach(function (obj, index) {
     const tr = document.createElement("tr");
     for (const [key, value] of Object.entries(obj)) {
       if (
@@ -33,22 +57,20 @@ function renderTbl(data) {
         tr.appendChild(td);
       }
     }
-    const td = document.createElement("td");
-    const btnEdit = document.createElement("button");
-    const btnDelete = document.createElement("button");
-    btnEdit.textContent = "Edit";
-    btnDelete.textContent = "Delete";
-    td.appendChild(btnEdit);
-    td.appendChild(btnDelete);
+    const td = renderTblBtn(index, data);
     tr.appendChild(td);
     tbody.appendChild(tr);
   });
+  return tbody;
+}
+
+function renderTbl(data) {
+  const table = renderTblHeading();
+  const tbody = renderTblBody(data);
   table.appendChild(tbody);
   TBL.appendChild(table);
 }
 
-export { renderTbl };
+export {renderTbl};
 
-// I tried to create multiple if statements for each desired output but encountered problems. not sure if I need === in the if statement or how to apply multiple variables in the if statement as well.
-
-// code is working
+// tried to create a new function that would render the row but could not figure how to pass the obj through it

@@ -1,4 +1,4 @@
-import { renderTbl } from "./render.js";
+import {renderTbl} from "./render.js";
 import { determineHouseSizePts, determineHouseholdPts } from "./cfp.js";
 
 const FORM = document.getElementById("form");
@@ -20,7 +20,7 @@ function start(firstName, lastName, householdMembers, houseSize) {
   });
 }
 
-FORM.addEventListener("submit", function (e) {
+FORM.addEventListener("submit", function(e){
   e.preventDefault();
   const firstName = FORM.firstname.value;
   const lastName = FORM.lastname.value;
@@ -28,7 +28,6 @@ FORM.addEventListener("submit", function (e) {
   const houseSize = FORM.houses.value;
   start(firstName, lastName, householdMembers, houseSize);
   OUTPUT.innerHTML = "";
-  //displayOutput();
   renderTbl(cfpData);
   FORM.reset();
 });
