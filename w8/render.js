@@ -25,17 +25,15 @@ function renderTblBtn(index, data){
     td.appendChild(btnEdit);
     td.appendChild(btnDelete);
     btnDelete.addEventListener('click', function(e){
-      console.log(e);
       data.splice(index, 1);
       renderTbl(data);
     })
     btnEdit.addEventListener('click', function(e){
-      console.log(e)
       const rdata = data[index];
       form.firstname.value = rdata.firstName;
       form.lastname.value = rdata.lastName;
-      form.houses.value = rdata.houseSize;
-      form.housem.value = rdata.householdMembers;
+      form.houses.value = rdata.houseS;
+      form.housem.value = rdata.houseHM;
       data.splice(index, 1);
       renderTbl(data);
     })
