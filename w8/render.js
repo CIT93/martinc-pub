@@ -31,11 +31,11 @@ function renderTblBtn(index, data){
     })
     btnEdit.addEventListener('click', function(e){
       console.log(e)
-      const rd = data[index];
-      FORM.firstName.value = data[index].firstName;
-      FORM.lastName.value = data[index].lastName;
-      FORM.houseSize.value = data[index].HouseSize;
-      FORM.householdMembers.value = data[index].householdMembers;
+      const rdata = data[index];
+      form.firstname.value = rdata.firstName;
+      form.lastname.value = rdata.lastName;
+      form.houses.value = rdata.houseSize;
+      form.housem.value = rdata.householdMembers;
       data.splice(index, 1);
       renderTbl(data);
     })
@@ -45,6 +45,7 @@ function renderTblBtn(index, data){
 function renderTblBody(data) {
   const tbody = document.createElement("tbody");
   data.forEach(function (obj, index) {
+    console.log(index)
     const tr = document.createElement("tr");
     for (const [key, value] of Object.entries(obj)) {
       if (
@@ -65,6 +66,10 @@ function renderTblBody(data) {
 }
 
 function renderTbl(data) {
+  TBL.innerHTML = "";
+  if (data.length === 0) {
+    return
+  }
   const table = renderTblHeading();
   const tbody = renderTblBody(data);
   table.appendChild(tbody);
