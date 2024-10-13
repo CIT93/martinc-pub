@@ -3,34 +3,51 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="module" src="main.js"></script>
-    <title>Week 8 Carbon Footprint - Pri</title>
+    <title>w9 code along</title>
     <link rel="stylesheet" href="style.css" />
+    <script type="module" src="main.js"></script>
   </head>
+
   <body>
+    <!-- <div id="error">
+    
+    </div> -->
     <form id="form">
       <fieldset>
-        <legend>Calculating your carbon footprint points</legend>
+        <legend>Calculating Your Carbon Footprint Points</legend>
         <div>
-          <label>First Name:</label>
-          <input type="text" name="firstname" maxlength="20" />
+          <label for="">First Name:</label>
+          <input
+            type="text"
+            name="firstname"
+            minlength="1"
+            maxlength="20"
+          />
+          <span id="firstnameError" class="error"></span>
         </div>
         <div>
-          <label>Last Name:</label>
-          <input type="text" name="lastname" maxlength="20" />
+          <label for="">Last Name:</label>
+          <input
+            type="text"
+            name="lastname"
+            minlength="1"
+            maxlength="20"
+          />
+          <span id="lastnameError" class="error"></span>
         </div>
         <div>
-          <label>Count the members of your household</label>
+          <label for="">Count the members of your household:</label>
           <input type="number" name="housem" min="1" max="6" required />
         </div>
         <div>
-          <label> Consider the size of your home</label>
+          <label for="">Consider the size of your home:</label>
+          <!-- <input type="text" name="houses" required/> -->
           <select name="houses" required>
-            <option value="">===Please enter size of home===</option>
-            <option value="apt">Apartment</option>
+            <option value="">---Please enter size of home---</option>
             <option value="large">Large</option>
             <option value="medium">Medium</option>
             <option value="small">Small</option>
+            <option value="apt">Apartment</option>
           </select>
         </div>
         <button type="submit">Submit</button>

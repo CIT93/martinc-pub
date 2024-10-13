@@ -20,3 +20,6 @@ td {
 tbody tr:nth-child(odd) {
   background-color: seagreen;
 }
+.error {
+  color: red;
+}
