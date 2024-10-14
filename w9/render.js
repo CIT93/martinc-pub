@@ -49,11 +49,7 @@ function renderTblBody(data) {
   data.forEach(function (obj, index) {
     const tr = document.createElement("tr");
     for (const [key, value] of Object.entries(obj)) {
-      if (
-        key !== "lastName" &&
-        key !== "houseHoldPoints" &&
-        key !== "houseSizePoints"
-      ) {
+      if (key !== "lastName" && key !== "houseHoldPoints" && key !== "houseSizePoints") {
         const td = document.createElement("td");
         td.textContent = value;
         tr.appendChild(td);
