@@ -3,25 +3,27 @@ import { determineHouseSizePts, determineHouseholdPts } from "./cfp.js";
 import { FORM, FNAME, LNAME, SUBMIT } from "./global.js";
 import { saveLS, cfpData } from "./storage.js";
 
-const start = function(firstName, lastName, householdMembers, houseSize) {
-  const houseHoldPoints = determineHouseholdPts(householdMembers);
-  const houseSizePoints = determineHouseSizePts(houseSize);
+const start = (...points) => {
+  const houseHoldPoints = determineHouseholdPts(points[2]);
+  const houseSizePoints = determineHouseSizePts(points[3]);
   const total = houseHoldPoints + houseSizePoints;
   cfpData.push({
-    firstName: firstName,
-    lastName: lastName,
-    houseHM: householdMembers,
-    houseS: houseSize,
+    firstName: points[0],
+    lastName: points[1],
+    houseHM: points[2],
+    houseS: points[3],
     // houseHPts: houseHoldPoints,
     // houseSPts: houseSizePoints,
     cfpTotal: total,
   });
 };
 
+start("F", "L", 2, "medium");
+
 renderTbl(cfpData);
 
 // Function to validate a single field
-const validateField = function(event) {
+const validateField = event => {
   const field = event.target.value;
   const fieldId = event.target.id;
   const fieldError = document.getElementById(`${fieldId}Error`);
@@ -38,9 +40,13 @@ const validateField = function(event) {
 // Attach blur event listeners
 FNAME.addEventListener('blur', validateField);
 LNAME.addEventListener('blur', validateField);
+document.getElementById("form").addEventListener
+("submit", event => {
+  event.preventDefault();
+});
 
 
-FORM.addEventListener('submit', function (e) {
+FORM.addEventListener('submit', e => {
   e.preventDefault();
   if (FNAME.value !== '' && LNAME.value !== '') {
     SUBMIT.textContent = '';
@@ -49,7 +55,7 @@ FORM.addEventListener('submit', function (e) {
     renderTbl(cfpData);
     FORM.reset();
   } else {
-    SUBMIT.textContent = "form reqiures first name and last name";
+    SUBMIT.textContent = "form requires first name and last name";
   }
 });
 

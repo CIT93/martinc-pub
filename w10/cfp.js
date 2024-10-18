@@ -1,4 +1,7 @@
-const determineHouseSizePts = function(size) {
+import { renderTbl } from "./render.js";
+import { cfpData } from "./storage.js";
+
+const determineHouseSizePts = (size = "medium") => {
   let houseSizePoints = 0;
   if (size === "large") {
     houseSizePoints = 10;
@@ -12,7 +15,7 @@ const determineHouseSizePts = function(size) {
   return houseSizePoints;
 };
 
-const determineHouseholdPts = function(numberInhousehold) {
+const determineHouseholdPts = (numberInhousehold = 2) => {
   let houseHoldPoints = 0;
   if (numberInhousehold === 1) {
     houseHoldPoints = 14;
@@ -31,5 +34,9 @@ const determineHouseholdPts = function(numberInhousehold) {
   }
   return houseHoldPoints;
 };
+
+const defaultPoints = determineHouseholdPts() + determineHouseSizePts();
+  console.log(defaultPoints);
+  renderTbl(cfpData);
 
 export { determineHouseSizePts, determineHouseholdPts };
