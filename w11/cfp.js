@@ -39,4 +39,4 @@ const defaultPoints = determineHouseholdPts() + determineHouseSizePts();
   console.log(defaultPoints);
   renderTbl(cfpData);
 
-export { determineHouseSizePts, determineHouseholdPts };
+export { determineHouseSizePts, determineHouseholdPts};
