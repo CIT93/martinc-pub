@@ -1,23 +1,7 @@
 import { renderTbl } from "./render.js";
-import { determineHouseSizePts, determineHouseholdPts } from "./cfp.js";
 import { FORM, FNAME, LNAME, SUBMIT } from "./global.js";
 import { saveLS, cfpData } from "./storage.js";
 import {FP} from "./fp.js";
-
-const start = (...points) => {
-  const houseHoldPoints = determineHouseholdPts(points[2]);
-  const houseSizePoints = determineHouseSizePts(points[3]);
-  const total = houseHoldPoints + houseSizePoints;
-  cfpData.push({
-    firstName: points[0],
-    lastName: points[1],
-    houseHM: points[2],
-    houseS: points[3],
-    houseHPts: houseHoldPoints,
-    houseSPts: houseSizePoints,
-    cfpTotal: total,
-  });
-};
 
 renderTbl(cfpData);
 
@@ -49,10 +33,7 @@ FORM.addEventListener('submit', e => {
   e.preventDefault();
   if (FNAME.value !== '' && LNAME.value !== '') {
     SUBMIT.textContent = '';
-    // start(FNAME.value, LNAME.value, parseInt(FORM.housem.value), FORM.houses.value);
     const fpObj = new FP(FNAME.value, LNAME.value, parseInt(FORM.housem.value), FORM.houses.value, FORM.foodType.value);
-    // fpObj.houseHoldPoints();
-    // fpObj.houseSizePoints();
     cfpData.push(fpObj);
     saveLS(cfpData);
     renderTbl(cfpData);
@@ -62,70 +43,53 @@ FORM.addEventListener('submit', e => {
   }
 });
 
-//Rest Operator
-// const add2 = function(...a) {
-//   return 2 + a[3];
+// let pizza
+// function orderPizza() {
+//   console.log('order pizza')
+//   setTimeout(() => {
+// pizza = '🍕'
+// console.log(`${pizza} is ready`)
+//   }, 2000)
+//   console.log('pizza was ordered')
+// }
+// orderPizza()
+// console.log('call Qoli')
+// console.log(`eat ${pizza}`)
+
+// function orderPizza(callback) {
+//   setTimeout(() => {
+//     const pizza = `🍕`
+//     callback(pizza)
+//   }, 2000)
 // }
 
-// const result = add2(1, 2, 3, 4);
-
-//Arrow Function
-
-// const add2 = a => {
-//   return 2 + a;
+// function pizzaReady(pizza) {
+//   console.log(`eat the ${pizza}`)
 // }
 
-// const result = add2(100);
+// orderPizza(pizzaReady)
+// console.log(`call Qoli`)
 
-//IIFE
+// window.addEventListener('click', callback)
 
-// const a = 3;
-
-// (function(a){
-//   console.log("inside IIFE ");
-//   console.log(a);
-// })(a);
-
-// Creating objects with class
-
-// const me = {
-//   name: "Martin",
-//   hairColor: "Brown",
-//   location: "Home",
-//   sleepScore: 77,
-//   introduce: function() {
-//     console.log(this)
-//     console.log(`this is $(this.name) with $(this.hairColor) hair color is in $(this.location) with a $(this.sleepScore) sleep score`)
-//   }
+// function callback() {
+//   console.log('clicked')
 // }
 
-// const you = {
-//   name: "Rio",
-//   hairColor: "Brown",
-//   location: "office",
-//   sleepScore: 95,
-//   introduce: function() {
-//     console.log(this)
-//     console.log(`this is $(this.name) with $(this.hairColor) hair color is in $(this.location) with a $(this.sleepScore) sleep score`)
-//   }
+// function thing1(callback) {
+// callback()
 // }
 
-// me.introduce();
-// you.introduce();
-
-// class Human {
-//   constructor(name, hairColor, location, sleepScore){
-//     this.name = name
-//     this.hairColor = hairColor
-//     this.location = location
-//     this.sleepScore = sleepScore
-//   }
-//   introduce() {
-//     console.log(`this is $(this.name) with $(this.hairColor) hair color is in $(this.location) with a $(this.sleepScore) sleep score`)
-//   }
+// function thing2(callback) {
+//   callback()
 // }
-// const Martin = new Human("Martin", "Brown", "home", 77);
-// const Rio = new Human("Rio", "Brown", "office", 95);
-// Martin.introduce();
-// Rio.introduce();
-// Martin.hrv = 50;
+
+// function thing3(callback) {
+//   callback()
+// }
+
+// thing1(() => {
+//   thing2(() => {
+//     thing3()
+//   })
+// })
