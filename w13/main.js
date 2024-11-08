@@ -6,16 +6,14 @@ function startExercise() {
     const timeInMilliseconds = timeInMinutes * 60000;  // this where the time is converted
     const outputDiv = document.getElementById("output"); // ouput
     outputDiv.innerHTML = `<p> GET READY! For your ${exerciseType} exercise for ${reps} reps! </p>`;
-}
-
 // this func shows the GO!
-function startMessage() {
-    outputDiv.innerHTML += `<p> GO GO GO!!! Your ${exerciseType} exercise starts now! </p>`;
-}
-
+    function startMessage() {
+        outputDiv.innerHTML += `<p> GO GO GO!!! Your ${exerciseType} exercise starts now! </p>`;
+    }
 // this func shows the STOP!!!
-function stopMessage() {
-    outputDiv.innerHTML += `<p> STOP!!! Your ${exerciseType} exercise is done! </p>`;
+    function stopMessage() {
+        outputDiv.innerHTML += `<p> STOP!!! Your ${exerciseType} exercise is done! </p>`;
+    }
+    startMessage();  // call startMessage
+    setTimeout(stopMessage, timeInMilliseconds);  // sets the timeout for the message after the time in minutes
 }
-startMessage();  // call startMessage
-setTimeout(stopMessage, timeInMilliseconds);  // sets the timeout for the message after the time in minutes
