@@ -1,4 +1,6 @@
 const FORM = document.getElementById("output");
+const submitBtn = document.getElementById("submitBtn");
+
 function startExercise() {
 
     return new Promise((resolve, reject) => {
@@ -41,10 +43,13 @@ function startExercise() {
     });
 }
 
-startExercise() // run the function and handle success or error
-    .then(() => {
-        FORM.innerHTML += `<p>You did it!</p>`;
-    })
-    .catch(error => {
-        FORM.innerHTML = `<p>Error: ${error}</p>`;
-    });
+submitBtn.addEventListener("click", () => {
+    startExercise()
+        .then(() => {
+            FORM.innerHTML += `<p>You did it!</p>`;
+        })
+        .catch(error => {
+            // Display error message
+            FORM.innerHTML = `<p>Error: ${error}</p>`;
+        });
+});

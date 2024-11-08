@@ -12,25 +12,19 @@
     <form id="form">
 
         <label for="exerciseType">Type of Exercise:</label>
-        <input name="Type" type="text" id="exerciseType" required>
-        <br>
-        <br>
+        <input id="exerciseType" type="text" placeholder="Exercise Type">
         
         <label for="reps">Target Number of Reps:</label>
-        <input name="Reps" type="number" id="reps" required>
-        <br>
-        <br>
+        <input id="reps" type="number" placeholder="Number of Reps">
         
         <label for="time">Timer (minutes):</label>
-        <input name="Time" type="number" id="time" required>
-        <br>
-        <br>
+        <input id="time" type="number" placeholder="Time in Minutes">
 
-        <button type="button" onclick="startExercise()">Start Exercise</button>
+        <button id="submitBtn">Submit</button>
 
     </form>
 
-    <div id="output" style="margin-top: 20px;">
+    <div id="output"></div>
         
     </div>
 
