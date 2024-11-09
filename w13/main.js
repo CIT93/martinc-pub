@@ -4,7 +4,6 @@ const submitBtn = document.getElementById("submitBtn");
 function startExercise() {
 
     return new Promise((resolve, reject) => {
-    FORM.innerHTML = "";
         // Getting user inputs
     const exerciseType = document.getElementById("exerciseType").value;  // type of exercise input
     const reps = document.getElementById("reps").value;  // rep value input
