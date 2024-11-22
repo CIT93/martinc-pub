@@ -63,11 +63,23 @@ const renderTblBody = data => {
   return tbody;
 };
 
+const calculateAvg = (data) => {
+  const totalPoints = data.reduce((sum, obj) => {
+    return sum + obj.houseHoldPoints + obj.houseSizePoints + obj.foodChoicePoints;
+  }, 0);
+  const averagePoints = totalPoints / data.length;
+  return averagePoints
+}
+
 const renderTbl = (data) => {
   TBL.innerHTML = "";
   if (data.length !== 0) {
   const table = renderTblHeading();
   const tbody = renderTblBody(data);
+  const avgPoints = calculateAvg(data);
+  const addRow = document.createElement("tr");
+    addRow.textContent = `Average Footprint: ${avgPoints}`;
+  tbody.appendChild(addRow);
   table.appendChild(tbody);
   TBL.appendChild(table);
   }
