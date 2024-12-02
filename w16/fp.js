@@ -1,5 +1,5 @@
 class FP {
-    constructor(first, last, houseMembers, houseSize, foodType, foodSrc, dishwasherUses, washingMachineUses, hasDishwasher, hasWashingMachine) {
+    constructor(first, last, houseMembers, houseSize, foodType, foodSrc, dishwasherUses, washingMachineUses, hasDishwasher, hasWashingMachine, householdPurchases) {
         this.first = first;
         this.last = last;
         this.houseMembers = houseMembers;
@@ -10,14 +10,17 @@ class FP {
         this.washingMachineUses = washingMachineUses || 0;
         this.hasDishwasher = hasDishwasher || false;
         this.hasWashingMachine = hasWashingMachine || false;
+        this.householdPurchases = householdPurchases || 0;
 
         this.calculateHouseHoldPoints();
         this.calculateHouseSizePoints();
         this.calculateFoodTypePoints();
         this.calculateFoodSrc();
         this.calculateWaterConsumption();
+        this.calculateHouseholdPurchasePoints();
         this.calculateTotal();
     }
+
 
     calculateHouseHoldPoints() {
         if (this.houseMembers === 1) {
@@ -94,11 +97,34 @@ class FP {
 
         this.waterConsumptionPoints = waterPoints;
     }
+
+    calculateHouseholdPurchasePoints() {
+        const purchases = this.householdPurchases;
+    
+        if (purchases > 7) {
+            this.householdPurchasePoints = 10;
+        } else if (purchases >= 5) {
+            this.householdPurchasePoints = 8;
+        } else if (purchases >= 3) {
+            this.householdPurchasePoints = 6;
+        } else if (purchases >= 1) {
+            this.householdPurchasePoints = 4;
+        } else {
+            this.householdPurchasePoints = 2;
+        }
+    }
+    
     
 
     calculateTotal() {
-        this.totalValue = this.houseHoldPoints + this.houseSizePoints + this.foodTypePoints + this.foodSrcPts + this.waterConsumptionPoints;
+        this.totalValue = this.houseHoldPoints +
+            this.houseSizePoints +
+            this.foodTypePoints +
+            this.foodSrcPts +
+            this.waterConsumptionPoints +
+            this.householdPurchasePoints;
     }
+    
 }
 
 export { FP };

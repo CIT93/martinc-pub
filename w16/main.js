@@ -41,7 +41,8 @@ FORM.addEventListener('submit', (event) => {
           parseInt(event.target.dishwasherUses.value) || 0,
           parseInt(event.target.washingMachineUses.value) || 0,
           event.target.hasDishwasher.checked,
-          event.target.hasWashingMachine.checked
+          event.target.hasWashingMachine.checked,
+          parseInt(event.target.householdPurchases.value)
       );
 
       const editIndex = FORM.dataset.editIndex;
