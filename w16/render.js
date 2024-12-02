@@ -6,16 +6,19 @@ const calculateAvg = (data) => {
   const waterConsumption = data.reduce((sum, ea) => sum + ea.waterConsumptionPoints, 0);
 
   const tableRef = document.getElementById("table-id");
-  const newTR = tableRef.insertRow(-1);
-  const newTD = newTR.insertCell(0);
-  const newTD_1 = newTR.insertCell(0);
-  const newTD_2 = newTR.insertCell(0);
+  let avgRow = document.getElementById("average-row");
 
-  const newLabel = document.createTextNode(`Average Footprint + Water`);
-  const newText = document.createTextNode(`${Math.floor((reduceTotal + waterConsumption) / data.length)}`);
-  newTD_1.appendChild(newLabel);
-  newTD.appendChild(newText);
+  if (!avgRow) {
+      avgRow = tableRef.insertRow(-1);
+      avgRow.id = "average-row";
+  }
+
+  avgRow.innerHTML = `
+      <td colspan="3">Average Footprint + Water</td>
+      <td>${Math.floor((reduceTotal + waterConsumption) / data.length)}</td>
+  `;
 };
+
 
 const renderTblHeading = () => {
   const table = document.createElement("table");
@@ -59,8 +62,10 @@ const renderTblBtn = (obj, index, data) => {
   td.appendChild(btnDelete);
 
   btnDelete.addEventListener('click', () => {
-      onUpdate(index, data);
-  });
+    data.splice(index, 1);
+    saveLS(data);
+    renderTbl(data);
+});
 
   btnEdit.addEventListener('click', () => {
       onUpdate(index, data); 

@@ -84,13 +84,17 @@ class FP {
             if (uses >= 1) return 1;
             return 0;
         };
-
+    
         let waterPoints = 0;
         if (this.hasDishwasher) waterPoints += calculatePoints(this.dishwasherUses);
         if (this.hasWashingMachine) waterPoints += calculatePoints(this.washingMachineUses);
+        if (this.hasDishwasher && this.hasWashingMachine) {
+            waterPoints *= 2;
+        }
 
         this.waterConsumptionPoints = waterPoints;
     }
+    
 
     calculateTotal() {
         this.totalValue = this.houseHoldPoints + this.houseSizePoints + this.foodTypePoints + this.foodSrcPts + this.waterConsumptionPoints;
