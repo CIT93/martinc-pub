@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>w11 code along</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="main.js"></script>
+  </head>
+
+  <body>
+    <form id="form">
+      <fieldset>
+        <legend>Calculating Your Carbon Footprint Points</legend>
+        <div>
+          <label>First Name:</label>
+          <input type="text" name="firstName" id="firstName" maxlength="20" />
+        </div>
+        <div>
+          <label>Last Name:</label>
+          <input type="text" name="lastName" id="lastName" maxlength="20" />
+        </div>
+        <div>
+          <label>Count the members of your household:</label>
+          <input type="number" name="housem" min="1" max="6" required />
+        </div>
+        <div>
+          <label>Consider the size of your home:</label>
+          <select name="houses" required>
+            <option value="">---Please enter size of home---</option>
+            <option value="large">Large</option>
+            <option value="medium">Medium</option>
+            <option value="small">Small</option>
+            <option value="apt">Apartment</option>
+          </select>
+        </div>
+        <div>
+          <label for="">What type of food do you eat?</label>
+          <select name="foodType" required>
+            <option value="">---Please select food type---</option>
+            <option value="domDaily">domestic meat on a daily basis</option>
+            <option value="domWeekly">domestic meat a few times per week</option>
+            <option value="vegetarian">vegetarian</option>
+            <option value="vegan">vegan</option>
+          </select>
+        </div>
+        <div>
+          <label>Evaluate Food Source</label>
+          <select name="foodSrc" required>
+            <option value=""> Source of Food </option>
+            <option value="packed">prepackaged convenience food</option>
+            <option value="balance">good balance of fresh and convenience food</option>
+            <option value="local">fresh, locally grown, or hunted food</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Dishwasher Uses per Week:</label>
+          <input type="number" name="dishwasherUses" min="0" max="20" required />
+      </div>
+      <div>
+          <label>Washing Machine Uses per Week:</label>
+          <input type="number" name="washingMachineUses" min="0" max="20" required />
+      </div>
+      <div>
+          <label>Do you have a Dishwasher?</label>
+          <input type="checkbox" name="hasDishwasher" />
+      </div>
+      <div>
+          <label>Do you have a Washing Machine?</label>
+          <input type="checkbox" name="hasWashingMachine" />
+      </div>
+        
+        <button type="submit">Submit</button><br />
+        <span id="submitError" class="error"></span>
+      </fieldset>
+    </form>
+    <div id="tab-data"></div>
+  </body>
+</html>
