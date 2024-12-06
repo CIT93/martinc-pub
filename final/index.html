@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Savings Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Finance Savings Form</h1>
+    <form id="output">
+        <label for="moneyAvailable">Money Available:</label>
+        <input type="number" id="moneyAvailable" name="moneyAvailable" min="0" required>
+        <div class="error-message" id="moneyAvailableError"></div>
+
+        <label for="foodExpense">Food Expense:</label>
+        <input type="number" id="foodExpense" name="foodExpense" min="0" required>
+        <label for="transportationExpense">Transportation Expense:</label>
+        <input type="number" id="transportationExpense" name="transportationExpense" min="0" required>
+        <label for="billsExpense">Bills Expense:</label>
+        <input type="number" id="billsExpense" name="billsExpense" min="0" required>
+        <button type="submit">Calculate Savings</button>
+    </form>
+
+    <h2>Result:</h2>
+    <div id="results"></div>
+
+    <script type="module" src="main.js"></script>
+</body>
+</html>
+
